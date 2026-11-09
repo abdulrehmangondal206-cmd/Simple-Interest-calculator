@@ -8,8 +8,8 @@ read -p "Enter the principal amount: " principal
 read -p "Enter the rate of interest (% per year): " rate
 read -p "Enter the time period (in years): " time
 
-interest=$(echo "scale=2; ($principal * $rate * $time) / 100" | bc)
-total=$(echo "scale=2; $principal + $interest" | bc)
+interest=$(awk "BEGIN {printf \"%.2f\", ($principal * $rate * $time) / 100}")
+total=$(awk "BEGIN {printf \"%.2f\", $principal + $interest}")
 
 echo "-------------------------------"
 echo "Principal       : $principal"
